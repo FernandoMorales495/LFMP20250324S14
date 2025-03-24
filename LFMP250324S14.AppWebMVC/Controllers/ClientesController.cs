@@ -19,9 +19,16 @@ namespace LFMP250324S14.AppWebMVC.Controllers
         }
 
         // GET: Clientes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(Cliente cliente, int registros)
         {
-            return View(await _context.Clientes.ToListAsync());
+            var query = _context.Clientes.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(cliente.Nombre))
+                query = query.Where(s => s.Nombre.Contains(cliente.Nombre));
+            if (!string.IsNullOrWhiteSpace(cliente.Direccion))
+                query = query.Where(s => s.Direccion.Contains(cliente.Direccion));
+            if (registros > 0)
+                query = query.Take(registros);
+            return View(await query.ToListAsync());
         }
 
         // GET: Clientes/Details/5

@@ -6,11 +6,11 @@
 
 <h1>Eliminar</h1>
 
-<h3>Estas seguro que quieres eliminar el registro?</h3>
+<h4>Estas seguro que quieres eliminar el registro?</h4>
 <div>
    
     <hr />
-    <dl class="row">
+    <dl class="row" >
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
@@ -39,7 +39,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Borrar" class="btn btn-danger" /> |
+        <input type="submit" value="Borrar" class="btn btn-danger" /> 
         <a asp-action="Index" class="btn btn-dark">Cancelar</a>
     </form>
 </div>
